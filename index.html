@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR 코드 생성기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>QR 코드 생성기</h1>
+      <p class="subtitle">텍스트나 URL을 입력하면 바로 QR 코드가 만들어져요</p>
+    </header>
+
+    <main class="card">
+      <div class="field">
+        <label for="text-input">텍스트 / URL</label>
+        <textarea id="text-input" rows="3" placeholder="https://example.com">https://example.com</textarea>
+      </div>
+
+      <div class="options-grid">
+        <div class="field">
+          <label for="size-input">크기 (px)</label>
+          <select id="size-input">
+            <option value="150">150</option>
+            <option value="200">200</option>
+            <option value="256" selected>256</option>
+            <option value="320">320</option>
+            <option value="400">400</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="ecc-input">오류 정정 레벨</label>
+          <select id="ecc-input">
+            <option value="L">낮음 (L)</option>
+            <option value="M" selected>보통 (M)</option>
+            <option value="Q">높음 (Q)</option>
+            <option value="H">최고 (H)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="fg-input">QR 색상</label>
+          <input type="color" id="fg-input" value="#000000">
+        </div>
+
+        <div class="field">
+          <label for="bg-input">배경 색상</label>
+          <input type="color" id="bg-input" value="#ffffff">
+        </div>
+      </div>
+
+      <div class="qr-output">
+        <div id="qr-canvas-wrap">
+          <canvas id="qr-canvas"></canvas>
+        </div>
+        <p id="error-msg" class="error-msg" hidden></p>
+      </div>
+
+      <div class="actions">
+        <button id="download-btn" type="button">PNG로 다운로드</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>모든 QR 코드는 브라우저 안에서만 생성되며 서버로 전송되지 않아요.</p>
+    </footer>
+  </div>
+
+  <script src="qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
